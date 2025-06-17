@@ -218,7 +218,7 @@ fn variable_scope(){
     let name = "Alfian";
     println!("Nama saya adalah {}", name);
     {
-        let umur = 21;
+        let _umur = 21;
         println!( "{} {}", name," adalah seorang mahasiswa");
     }
     // println!("Umur saya adalah {}", umur) Eror
@@ -244,3 +244,53 @@ fn function_a(){
 }
 
 
+#[test]
+fn string(){
+    let name = " Alfian Eka Rahman ";
+    let trim = name.trim();
+
+    println!("{} {} {}", trim, trim.len(), name.len());
+
+    let mut username = "Mike";
+    println!("{}", username);
+    
+    username = "Jhon";
+    println!("{}", username);
+}
+
+#[test]
+fn string_type(){
+    let mut name = String::from("Alfian Eka");
+    println!("{}", name);
+
+    name.push_str(" Rahman");
+    println!("{}", name);
+}
+
+#[test]
+fn ownership_rules(){
+    let a = 10;
+    
+    {
+        let b = 23;
+        println!("{}", b);
+    }
+    println!("{}", a);
+}
+
+#[test]
+fn data_copy(){
+    let a = 10;
+    let b = a;
+
+    println!("{} {}", a, b);
+}
+
+#[test]
+fn ownership_movement(){
+    let name1 = String::from("Alfian");
+
+    let _name2 = name1;
+
+    println!("{}", _name2);
+}
