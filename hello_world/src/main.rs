@@ -294,3 +294,75 @@ fn ownership_movement(){
 
     println!("{}", _name2);
 }
+
+#[test]
+fn clone(){
+    let fullname = String::from("Alfian Eka Rahman");
+    let myname = fullname.clone();
+
+    println!("{} {}",fullname, myname );
+}
+
+#[test]
+fn if_expression(){
+    let value = 20;
+    let result = if value > 9{
+        "GooD!"
+    }else if value >= 7{
+        "Not Bad!"
+    }else if value >= 4 {
+        "Bad!"
+    }else {
+        "Very Bad!"
+    };
+    
+    println!("{}", result);
+}
+
+#[test]
+fn loop_expression(){
+    let mut counter = 0;
+    loop {
+        counter += 1;
+        
+        if counter > 10 {
+            break;
+        }else if counter % 2 == 0 {
+            continue;
+        }
+        println!("{}", counter)
+    }
+}
+
+#[test]
+fn loop_return_value(){
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+        if counter > 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("{}", result);
+}
+
+#[test]
+fn loop_label(){
+    let mut count = 0;
+    'counting_up: loop {
+        let mut  remaining = 1;
+        loop {
+        if remaining <= 10 {
+            break;
+        }
+        if count == 10 {
+            break 'counting_up;
+            
+        }
+        remaining += 1;
+        }
+        count += 1;
+        println!("{} * {} = {}", count, remaining, count * remaining);
+    }
+}
