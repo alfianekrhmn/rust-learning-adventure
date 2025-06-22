@@ -1,3 +1,6 @@
+use core::time;
+use std::f32::consts::E;
+
 fn main() {
     println!("Hello, Alfian!");
 }
@@ -365,4 +368,135 @@ fn loop_label(){
         count += 1;
         println!("{} * {} = {}", count, remaining, count * remaining);
     }
+}
+
+#[test]
+fn array_iteration() {
+    let array = ["a", "b", "c", "d", "e"];
+    let mut index = 0;
+    while index < array.len() {
+        println!("Value: {}", array[index]);
+        index += 1;
+    }
+
+    let arr = ["p", "o", "i", "u"];
+    for value in arr {
+        println!("The value is {}", value);
+    }
+}
+
+#[test]
+fn range() {
+    let range = 0..5;
+    println!("Start : {}", range.start);
+    println!("End : {}", range.end);
+
+    let array = ["l", "k", "j", "h", "g"];
+    for i in range {
+        println!("{}", array[i]);
+    }
+}
+
+#[test]
+fn range_inclusive() {
+    let range = 0..=4;
+    println!("Start : {}", range.start());
+    println!("End : {}", range.end());
+
+    let array = ["l", "k", "j", "h", "g"];
+    for i in range {
+        println!("{}", array[i]);
+    }
+}
+
+fn say_hello() {
+    println!("Hello world")
+}
+
+#[test]
+fn test_say_hello() {
+    say_hello();
+    say_hello();
+    say_hello();
+}
+
+fn say_goodbye(firstname: &str, lastname: &str){
+    println!("Goodbye {} {}", firstname, lastname);
+}
+
+#[test]
+fn test_say_goodbye() {
+    say_goodbye("Alfian", "Eka Rahman");
+}
+
+
+fn factorial_loop(n: i32) -> i32{
+    if n < 1 {
+        return 0;
+    }
+
+    let mut result = 1;
+    for i in 1..=n {
+        result *= i
+    }
+    result
+}
+
+#[test]
+fn test_factorial_loop() {
+    let result = factorial_loop(10);
+    println!("{}", result);
+    
+    let result = factorial_loop(7);
+    println!("{}", result);
+
+    let result = factorial_loop(-12);
+    println!("{}", result);
+}
+
+fn print_text(value: String, time: u32) {
+    if time == 0 {
+        return;
+    }else {
+        println!("{}", value);
+    }
+    print_text(value, time - 1);
+}
+
+#[test]
+fn test_print_text() {
+    print_text(String::from("Alfian"), 5);
+}
+
+fn recursive_factorial(n: i32) -> i32{
+    if n <= 1 {
+        return 1;
+    }
+    
+    n * recursive_factorial(n - 1)
+}
+
+#[test]
+fn test_recursive_factorial() {
+    let recursive = recursive_factorial(3);
+    println!("{}", recursive);
+}
+
+fn print_number(n: i32){
+    println!("Number {}", n);
+}
+
+fn hi(name:String) {
+    println!("Hi {}", name);
+}
+
+#[test]
+fn test_hi() {
+    let number = 10;
+    print_number(number);
+    println!("{}", number);
+
+    let name = String::from("Mike");
+    hi(name);
+    // print!("Hi {}", name);
 }
