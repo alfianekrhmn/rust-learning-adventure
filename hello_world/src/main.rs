@@ -589,6 +589,33 @@ fn kategori_usia(usia: u8) {
     }
 }
 
+
+fn cetak_ganjil(angka: i32) {
+    for nomor in 1..=angka {
+        if nomor % 2 != 0 {
+            println!("{} adalah angka ganjil", nomor)
+        }
+    }
+}
+
+fn mundur_angka(angka: i32) {
+    let mut nomor = angka;
+    while nomor > 0{
+        println!("{}", nomor);
+        nomor -= 1
+    }
+}
+
+fn looping_nama(mut jumlah: i32) {
+    loop {
+        println!("Nama saya adalah Rustacean!");
+        jumlah -= 1;
+        if jumlah == 0 {
+            break;
+        }
+    }
+} 
+
 fn main(){
     // variable();
     // tipe_data();
@@ -605,8 +632,12 @@ fn main(){
     // cek_nilai_switch(88);
     // cek_nilai_switch(99);
 
-    kategori_usia(11);
-    kategori_usia(16);
-    kategori_usia(58);
-    kategori_usia(70);
+    // kategori_usia(11);
+    // kategori_usia(16);
+    // kategori_usia(58);
+    // kategori_usia(70);
+
+    // cetak_ganjil(20);
+    // mundur_angka(10);
+    looping_nama(4);
 }
