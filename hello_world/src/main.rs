@@ -1,9 +1,4 @@
-use core::time;
 use std::f32::consts::E;
-
-fn main() {
-    println!("Hello, Alfian!");
-}
 
 #[test]
 fn hello_test() {
@@ -499,4 +494,119 @@ fn test_hi() {
     let name = String::from("Mike");
     hi(name);
     // print!("Hi {}", name);
+}
+
+#[test]
+fn test_main() {
+    let nama = "Alfian";
+    let mut umur = 21;
+    println!("Nama saya adalah {}", nama);
+    println!("Umur saya adalah {}", umur);
+
+    umur = 20;
+    println!("Umur saya sekarang baru {}", umur)
+} 
+
+fn variable() {
+    let nama: &'static str = "Alfian";
+    let mut umur: i32 = 22;
+    let tinggi: f64 = 165.5;
+    let status_mahasiswa: bool = true;
+    let karakter_kesukaan: char = 'A';
+
+    println!("Nama saya adalah {}", nama);
+    println!("Umur saya adalah {} tahun", umur);
+    println!("Tinggi saya adalah {}cm", tinggi);
+    println!("Apakah saya adalah mahasiswa? {}", status_mahasiswa);
+    println!("Karakter yang saya sukai adalah '{}'", karakter_kesukaan);
+}
+
+fn tipe_data() {
+    let umur: u8 = 25;
+    let tinggi = 170.5;
+    let aktif = true;
+    let huruf = 'R';
+
+    println!("Umur : {}, Tinggi {}, Aktif : {}, Huruf : {}",umur, tinggi, aktif, huruf )
+}
+
+fn konversi_type() {
+    let x = 42;
+    let y = x as f64;
+
+    println!("Nilai X: {}, setelah casting ke float: {}", x, y);
+}
+
+fn casting() {
+    let panjang = 20.5;
+    let lebar = 35.5;
+    let luas = panjang * lebar;
+    println!("Panjangnya {}", panjang);
+    println!("Lebarnya {}", lebar);
+    println!("Luas {}", luas);
+    println!("Luas yang sudah dibulatkan {}", luas as i32);
+    let info_persegi_panjang = (panjang, lebar, luas);
+    println!("{:#?}", info_persegi_panjang);
+}
+
+fn data_mahasiswa() {
+    let nama = "Alfian";
+    let umur: u8 = 20;
+    let ipk: f32 = 3.75;
+    let status_mahasiswa = true;
+    let info_mahasiswa = (nama, umur, ipk, status_mahasiswa);
+
+    println!("{:#?}", info_mahasiswa);
+}
+
+fn cek_nilai_if(nilai: u8) {
+    if nilai >= 90 {
+        println!("Dengan nilai {}, kamu mendapat predikat: A", nilai)
+    }else if nilai >= 80 {
+        println!("Dengan nilai {}, kamu mendapat predikat: B", nilai)
+    }else if nilai >= 70 {
+        println!("Dengan nilai {}, kamu mendapat predikat: C", nilai)
+    }else {
+        println!("Dengan nilai {}, kamu mendapat predikat: D", nilai)
+    }
+}
+
+fn cek_nilai_switch(nilai: u8) {
+    match nilai {
+        90..=100 => println!("Dengan nilai {}, kamu mendapat predikat: A", nilai),
+        80..=89 => println!("Dengan nilai {}, kamu mendapat predikat: B", nilai),
+        70..=79 => println!("Dengan nilai {}, kamu mendapat predikat: C", nilai),
+        _ => println!("Dengan nilai {}, kamu mendapat predikat: D", nilai),
+    }
+}
+
+fn kategori_usia(usia: u8) {
+    match usia {
+        0..=12 => println!("Usia {} termasuk dalam kategori : Anak - Anak", usia),
+        13..=17 => println!("Usia {} termasuk dalam kategori : Remaja", usia),
+        18..=59 => println!("Usia {} termasuk dalam kategori : Dewasa", usia),
+        _ => println!("Usia {} termasuk dalam kategori : Lansia", usia),
+    }
+}
+
+fn main(){
+    // variable();
+    // tipe_data();
+    // konversi_type();
+    // casting();
+    // data_mahasiswa();
+    // cek_nilai_if(77);
+    // cek_nilai_if(66);
+    // cek_nilai_if(88);
+    // cek_nilai_if(99);
+
+    // cek_nilai_switch(66);
+    // cek_nilai_switch(77);
+    // cek_nilai_switch(88);
+    // cek_nilai_switch(99);
+
+    kategori_usia(11);
+    kategori_usia(16);
+    kategori_usia(58);
+    kategori_usia(70);
 }
