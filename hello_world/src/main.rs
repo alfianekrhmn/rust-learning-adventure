@@ -616,6 +616,53 @@ fn looping_nama(mut jumlah: i32) {
     }
 } 
 
+fn tampilkan_nilai() {
+    let array_nilai_ujian = [80, 88, 65, 76, 98];
+    for nilai in array_nilai_ujian {
+        println!("Nilai Akhir Mahasiswa Adalah {}", nilai)
+    }
+}
+
+fn keranjang_belanja() {
+    let mut all_product = vec!["Cutterpilar", "Sosis", "Kopi Susu", "Bronis Lumer", "Pizza"];
+    all_product.push("Kopi Vanila");
+
+    println!("Daftar Product");
+    for product in all_product {
+        println!("- {:?}", product)
+    }
+}
+
+fn kali_angka(a:i32, b:i32) -> i32 {
+    a * b
+}
+
+fn cek_kelulusan(nilai: u8) -> bool{
+    nilai >= 75
+}
+
+fn profil_mahasiswa(nama: &str, umur: u8, ipk: f32) -> (String, u8, f32) {
+    (nama.to_string(), umur, ipk)
+}
+
+struct Mahasiswa {
+    nama: String,
+    umur: u8,
+    ipk: f32,
+}
+
+struct Produk {
+    nama: String,
+    harga: u32,
+    stok: u16,
+}
+
+fn tampilkan_produk(produk: &Produk){
+    println!("Nama : {}", produk.nama);
+    println!("Harga : {}", produk.harga);
+    println!("Stok : {}", produk.stok);
+}
+
 fn main(){
     // variable();
     // tipe_data();
@@ -639,5 +686,37 @@ fn main(){
 
     // cetak_ganjil(20);
     // mundur_angka(10);
-    looping_nama(4);
+    // looping_nama(4);
+    // tampilkan_nilai()
+    // keranjang_belanja()
+    // let perkalian = kali_angka(2, 9);
+    // println!("{}", perkalian)
+    // let lulus: (bool) = cek_kelulusan(80);
+    // println!("Status kelulusan: {}", lulus); // true
+    // let informasi_mahasiswa = profil_mahasiswa("alfian", 21, 3.7);
+    // println!("Nama: {}", informasi_mahasiswa.0);
+    // println!("Umur: {}", informasi_mahasiswa.1);
+    // println!("IPK: {}", informasi_mahasiswa.2);
+    // let mahasiswa1 = Mahasiswa {
+    //     nama: String::from("Alfian"),
+    //     umur: 21,
+    //     ipk: 3.9,
+    // };
+
+    // println!("Nama : {}", mahasiswa1.nama);
+    // println!("Umur : {}", mahasiswa1.umur);
+    // println!("IPK : {}", mahasiswa1.ipk);
+
+    let produk1 = Produk {
+        nama: String::from("Sosis"),
+        harga: 5000,
+        stok: 5,
+    };
+    let produk2 = Produk {
+        nama: String::from("Cutterpilar"),
+        harga: 5000,
+        stok: 4,
+    };
+    tampilkan_produk(&produk1);
+    tampilkan_produk(&produk2);
 }
