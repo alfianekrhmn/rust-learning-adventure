@@ -645,7 +645,7 @@ fn profil_mahasiswa(nama: &str, umur: u8, ipk: f32) -> (String, u8, f32) {
     (nama.to_string(), umur, ipk)
 }
 
-struct Mahasiswa {
+struct Mahasiswa12 {
     nama: String,
     umur: u8,
     ipk: f32,
@@ -661,6 +661,26 @@ fn tampilkan_produk(produk: &Produk){
     println!("Nama : {}", produk.nama);
     println!("Harga : {}", produk.harga);
     println!("Stok : {}", produk.stok);
+}
+
+struct Mahasiswa {
+    nama: String,
+    ipk: f32,
+    aktif: bool,
+}
+
+impl Mahasiswa {
+    fn perkenalan_mahasiswa(&self) {
+        println!("Halo perkenalkan nama saya {}. ipk saya adalah {}.", self.nama, self.ipk);
+    }
+
+    fn status(&self) {
+        if self.aktif {
+            println!("Status Mahasiswa : Aktif");
+        }else {
+            println!("Status Mahasiswa : Tidak Aktif");
+        }
+    }
 }
 
 fn main(){
@@ -696,8 +716,8 @@ fn main(){
     // let informasi_mahasiswa = profil_mahasiswa("alfian", 21, 3.7);
     // println!("Nama: {}", informasi_mahasiswa.0);
     // println!("Umur: {}", informasi_mahasiswa.1);
-    // println!("IPK: {}", informasi_mahasiswa.2);
-    // let mahasiswa1 = Mahasiswa {
+    // println!("ipk: {}", informasi_mahasiswa.2);
+    // let mahasiswa1 = Mahasiswa12 {
     //     nama: String::from("Alfian"),
     //     umur: 21,
     //     ipk: 3.9,
@@ -705,18 +725,28 @@ fn main(){
 
     // println!("Nama : {}", mahasiswa1.nama);
     // println!("Umur : {}", mahasiswa1.umur);
-    // println!("IPK : {}", mahasiswa1.ipk);
+    // println!("ipk : {}", mahasiswa1.ipk);
 
-    let produk1 = Produk {
-        nama: String::from("Sosis"),
-        harga: 5000,
-        stok: 5,
+    // let produk1 = Produk {
+    //     nama: String::from("Sosis"),
+    //     harga: 5000,
+    //     stok: 5,
+    // };
+    // let produk2 = Produk {
+    //     nama: String::from("Cutterpilar"),
+    //     harga: 5000,
+    //     stok: 4,
+    // };
+    // tampilkan_produk(&produk1);
+    // tampilkan_produk(&produk2);
+
+    let mahasiswa1 = Mahasiswa {
+        nama: "Alfian".to_string(),
+        ipk: 3.5,
+        aktif: false,
     };
-    let produk2 = Produk {
-        nama: String::from("Cutterpilar"),
-        harga: 5000,
-        stok: 4,
-    };
-    tampilkan_produk(&produk1);
-    tampilkan_produk(&produk2);
+
+    mahasiswa1.perkenalan_mahasiswa();
+    mahasiswa1.status();
+
 }
