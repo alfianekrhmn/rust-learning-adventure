@@ -683,28 +683,29 @@ fn keranjang_belanja() {
 //     }
 // }
 
-struct Produk {
-    nama: String,
-    harga: u32,
-    stok: u32,
-}
+// struct Produk {
+//     nama: String,
+//     harga: u32,
+//     stok: u32,
+// }
 
-impl Produk {
-    fn tampilkan(&self) {
-        println!("Produk {} akan dijual dengan harga {} dan jumlah stoknya sebanyak {} buah", self.nama, self.harga, self.stok);
-    }
+// impl Produk {
+//     fn tampilkan(&self) {
+//         println!("Produk {} akan dijual dengan harga {} dan jumlah stoknya sebanyak {} buah", self.nama, self.harga, self.stok);
+//     }
 
-    fn tambah_stok(&mut self, jumlah: u32) {
-        self.stok += jumlah;
-        println!("Jumlah stok {} menjadi {} buah", self.nama, self.stok);
-    }
+//     fn tambah_stok(&mut self, jumlah: u32) {
+//         self.stok += jumlah;
+//         println!("Jumlah stok {} menjadi {} buah", self.nama, self.stok);
+//     }
 
-    fn diskon(&mut self, persen: u32) {
-        let potongan = self.harga * persen / 100;
-        self.harga -= potongan;
-        println!("Produk {} kini menjadi diskon {}% dengan harga {}", self.nama, persen, self.harga);
-    }
-}
+//     fn diskon(&mut self, persen: u32) {
+//         let potongan = self.harga * persen / 100;
+//         self.harga -= potongan;
+//         println!("Produk {} kini menjadi diskon {}% dengan harga {}", self.nama, persen, self.harga);
+//     }
+// }
+
 
 
 fn main(){
@@ -773,12 +774,22 @@ fn main(){
     // mahasiswa1.perkenalan_mahasiswa();
     // mahasiswa1.status();
 
-    let mut my_produk = Produk {
-        nama: "Bronies".to_string(),
-        harga: 5000,
-        stok: 54,
-    };
-    my_produk.tampilkan();
-    my_produk.tambah_stok(20);
-    my_produk.diskon(20);
+    // let mut my_produk = Produk {
+    //     nama: "Bronies".to_string(),
+    //     harga: 5000,
+    //     stok: 54,
+    // };
+    // my_produk.tampilkan();
+    // my_produk.tambah_stok(20);
+    // my_produk.diskon(20);
+
+    // let nama = "Alfian".to_string();
+    // println!("{}", nama);
+    // let nama_baru = nama;
+    // println!("{}", nama_baru)
+
+    let judul_buku = String::from("Belajar Rust untuk Pemula");
+    println!("{}", judul_buku);
+    let judul_favorit = judul_buku;
+    println!("{}", judul_favorit);
 }
