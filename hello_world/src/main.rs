@@ -710,6 +710,10 @@ fn cetak_bio(bio: &String) {
     println!("{}", bio);
 }
 
+fn ubah_status_mahasiswa(status: &mut bool) {
+    *status = !*status
+}
+
 fn main(){
     // variable();
     // tipe_data();
@@ -795,7 +799,11 @@ fn main(){
     // let judul_favorit = judul_buku;
     // println!("{}", judul_favorit);
 
-    let bio = String::from("Saya sedang belajar Rust.");
-    cetak_bio(&bio);
-    println!("{}", bio);
+    // let bio = String::from("Saya sedang belajar Rust.");
+    // cetak_bio(&bio);
+    // println!("{}", bio);
+
+    let mut aktif = false;
+    ubah_status_mahasiswa(&mut aktif);
+    println!("Status Mahasiswa : {}", aktif)
 }
