@@ -1,4 +1,4 @@
-use std::f32::consts::E;
+use std::{f32::consts::E, thread::ThreadId};
 
 #[test]
 fn hello_test() {
@@ -633,55 +633,79 @@ fn keranjang_belanja() {
     }
 }
 
-fn kali_angka(a:i32, b:i32) -> i32 {
-    a * b
-}
+// fn kali_angka(a:i32, b:i32) -> i32 {
+//     a * b
+// }
 
-fn cek_kelulusan(nilai: u8) -> bool{
-    nilai >= 75
-}
+// fn cek_kelulusan(nilai: u8) -> bool{
+//     nilai >= 75
+// }
 
-fn profil_mahasiswa(nama: &str, umur: u8, ipk: f32) -> (String, u8, f32) {
-    (nama.to_string(), umur, ipk)
-}
+// fn profil_mahasiswa(nama: &str, umur: u8, ipk: f32) -> (String, u8, f32) {
+//     (nama.to_string(), umur, ipk)
+// }
 
-struct Mahasiswa12 {
-    nama: String,
-    umur: u8,
-    ipk: f32,
-}
+// struct Mahasiswa12 {
+//     nama: String,
+//     umur: u8,
+//     ipk: f32,
+// }
+
+// struct Produk {
+//     nama: String,
+//     harga: u32,
+//     stok: u16,
+// }
+
+// fn tampilkan_produk(produk: &Produk){
+//     println!("Nama : {}", produk.nama);
+//     println!("Harga : {}", produk.harga);
+//     println!("Stok : {}", produk.stok);
+// }
+
+// struct Mahasiswa {
+//     nama: String,
+//     ipk: f32,
+//     aktif: bool,
+// }
+
+// impl Mahasiswa {
+//     fn perkenalan_mahasiswa(&self) {
+//         println!("Halo perkenalkan nama saya {}. ipk saya adalah {}.", self.nama, self.ipk);
+//     }
+
+//     fn status(&self) {
+//         if self.aktif {
+//             println!("Status Mahasiswa : Aktif");
+//         }else {
+//             println!("Status Mahasiswa : Tidak Aktif");
+//         }
+//     }
+// }
 
 struct Produk {
     nama: String,
     harga: u32,
-    stok: u16,
+    stok: u32,
 }
 
-fn tampilkan_produk(produk: &Produk){
-    println!("Nama : {}", produk.nama);
-    println!("Harga : {}", produk.harga);
-    println!("Stok : {}", produk.stok);
-}
-
-struct Mahasiswa {
-    nama: String,
-    ipk: f32,
-    aktif: bool,
-}
-
-impl Mahasiswa {
-    fn perkenalan_mahasiswa(&self) {
-        println!("Halo perkenalkan nama saya {}. ipk saya adalah {}.", self.nama, self.ipk);
+impl Produk {
+    fn tampilkan(&self) {
+        println!("Produk {} akan dijual dengan harga {} dan jumlah stoknya sebanyak {} buah", self.nama, self.harga, self.stok);
     }
 
-    fn status(&self) {
-        if self.aktif {
-            println!("Status Mahasiswa : Aktif");
-        }else {
-            println!("Status Mahasiswa : Tidak Aktif");
-        }
+    fn tambah_stok(&mut self, jumlah: u32) {
+        self.stok += jumlah;
+        println!("Jumlah stok {} menjadi {} buah", self.nama, self.stok);
+    }
+
+    fn diskon(&mut self, persen: u32) {
+        let potongan = self.harga * persen / 100;
+        self.harga -= potongan;
+        println!("Produk {} kini menjadi diskon {}% dengan harga {}", self.nama, persen, self.harga);
     }
 }
+
 
 fn main(){
     // variable();
@@ -740,13 +764,21 @@ fn main(){
     // tampilkan_produk(&produk1);
     // tampilkan_produk(&produk2);
 
-    let mahasiswa1 = Mahasiswa {
-        nama: "Alfian".to_string(),
-        ipk: 3.5,
-        aktif: false,
+    // let mahasiswa1 = Mahasiswa {
+    //     nama: "Alfian".to_string(),
+    //     ipk: 3.5,
+    //     aktif: false,
+    // };
+
+    // mahasiswa1.perkenalan_mahasiswa();
+    // mahasiswa1.status();
+
+    let mut my_produk = Produk {
+        nama: "Bronies".to_string(),
+        harga: 5000,
+        stok: 54,
     };
-
-    mahasiswa1.perkenalan_mahasiswa();
-    mahasiswa1.status();
-
+    my_produk.tampilkan();
+    my_produk.tambah_stok(20);
+    my_produk.diskon(20);
 }
