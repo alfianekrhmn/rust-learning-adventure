@@ -706,7 +706,9 @@ fn keranjang_belanja() {
 //     }
 // }
 
-
+fn cetak_bio(bio: &String) {
+    println!("{}", bio);
+}
 
 fn main(){
     // variable();
@@ -788,8 +790,12 @@ fn main(){
     // let nama_baru = nama;
     // println!("{}", nama_baru)
 
-    let judul_buku = String::from("Belajar Rust untuk Pemula");
-    println!("{}", judul_buku);
-    let judul_favorit = judul_buku;
-    println!("{}", judul_favorit);
+    // let judul_buku = String::from("Belajar Rust untuk Pemula");
+    // println!("{}", judul_buku);
+    // let judul_favorit = judul_buku;
+    // println!("{}", judul_favorit);
+
+    let bio = String::from("Saya sedang belajar Rust.");
+    cetak_bio(&bio);
+    println!("{}", bio);
 }
