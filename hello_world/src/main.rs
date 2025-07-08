@@ -1,3 +1,4 @@
+use core::slice;
 use std::{f32::consts::E, thread::ThreadId};
 
 #[test]
@@ -706,13 +707,20 @@ fn keranjang_belanja() {
 //     }
 // }
 
-fn cetak_bio(bio: &String) {
-    println!("{}", bio);
+// fn cetak_bio(bio: &String) {
+//     println!("{}", bio);
+// }
+
+// fn ubah_status_mahasiswa(status: &mut bool) {
+//     *status = !*status
+// }
+
+
+fn ambil_nama_depan(nama: String){
+    let depan = &nama[0..6];
+    println!("Nama depan: {}", depan); // Output: Alfian
 }
 
-fn ubah_status_mahasiswa(status: &mut bool) {
-    *status = !*status
-}
 
 fn main(){
     // variable();
@@ -803,7 +811,18 @@ fn main(){
     // cetak_bio(&bio);
     // println!("{}", bio);
 
-    let mut aktif = false;
-    ubah_status_mahasiswa(&mut aktif);
-    println!("Status Mahasiswa : {}", aktif)
+    // let mut aktif = false;
+    // ubah_status_mahasiswa(&mut aktif);
+    // println!("Status Mahasiswa : {}", aktif)
+
+    // let angka = [10, 20, 30, 40, 50];
+    // let slice_angka = &angka[1..4];
+    // println!("Isi Slice Angka : {:?}", slice_angka);
+
+    // let kalimat = String::from("Saya sedang belajar Rust");
+    // let bagian = &kalimat[5..11];
+    // println!("Bagian Kalimat : {}", bagian);
+
+    let nama_lengkap: String = String::from("Alfian Rahman");
+    ambil_nama_depan(nama_lengkap);
 }
