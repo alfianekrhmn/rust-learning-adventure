@@ -733,17 +733,43 @@ fn keranjang_belanja() {
 //     }
 // }
 
-enum Cuaca {
-    Cerah,
-    Hujan,
-    Berawan,
+// enum Cuaca {
+//     Cerah,
+//     Hujan,
+//     Berawan,
+// }
+
+// fn cek_cuaca(cuaca: Cuaca){
+//     match cuaca {
+//         Cuaca::Cerah => println!("Hari ini cerah, ayo keluar!"),
+//         Cuaca::Hujan => println!("Bawa payung ya, hujan!"),
+//         Cuaca::Berawan => println!("Awan mendung, tapi belum tentu hujan."),
+//     }
+// }
+
+// enum StatusLogin {
+//     Sukses(String),
+//     Gagal(String),
+// }
+
+// fn cek_login(username: &str, password: &str) -> StatusLogin {
+//     if username == "alfian" && password == "rahasia" {
+//         StatusLogin::Sukses(username.to_string())
+//     } else {
+//         StatusLogin::Gagal(String::from("Username or Password is wrong"))
+//     }
+// }
+
+enum HasilPembayaran  {
+    Berhasil(u32),
+    Gagal(String),
 }
 
-fn cek_cuaca(cuaca: Cuaca){
-    match cuaca {
-        Cuaca::Cerah => println!("Hari ini cerah, ayo keluar!"),
-        Cuaca::Hujan => println!("Bawa payung ya, hujan!"),
-        Cuaca::Berawan => println!("Awan mendung, tapi belum tentu hujan."),
+fn proses_pembayaran(jumlah: u32) -> HasilPembayaran {
+    if jumlah > 10_000 {
+        HasilPembayaran::Berhasil(jumlah)
+    }else {
+        HasilPembayaran::Gagal(String::from("Jumlah terlalu kecil"))
     }
 }
 
@@ -858,12 +884,44 @@ fn main(){
     // cek_status(status1);
     // cek_status(status2);
 
-    let cuaca_hujan = Cuaca::Hujan;
-    let cuaca_cerah = Cuaca::Cerah;
-    let cuaca_berawan = Cuaca::Berawan;
+    // let cuaca_hujan = Cuaca::Hujan;
+    // let cuaca_cerah = Cuaca::Cerah;
+    // let cuaca_berawan = Cuaca::Berawan;
 
-    cek_cuaca(cuaca_cerah);
-    cek_cuaca(cuaca_hujan);
-    cek_cuaca(cuaca_berawan);
+    // cek_cuaca(cuaca_cerah);
+    // cek_cuaca(cuaca_hujan);
+    // cek_cuaca(cuaca_berawan);
+
+    // let hasil_login = cek_login("alfian", "rahasia");
+    
+    // match hasil_login {
+    //     StatusLogin::Sukses(nama) => {
+    //         println!("Selamat datang {}", nama)
+    //     },
+    //     StatusLogin::Gagal(nama) => {
+    //         println!("Login gagal {}", nama)
+    //     },
+    // }
+
+    let pembayaran1 = proses_pembayaran(5000);
+    let pembayaran2 = proses_pembayaran(15000);
+
+    match pembayaran1 {
+        HasilPembayaran::Berhasil(jumlah) => {
+            println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
+        },
+        HasilPembayaran::Gagal(jumlah) => {
+            println!("Pembayaran gagal: Jumlah terlalu kecil")
+        }
+    }
+
+    match pembayaran2 {
+        HasilPembayaran::Berhasil(jumlah) => {
+            println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
+        },
+        HasilPembayaran::Gagal(pesan) => {
+            println!("Pembayaran gagal: {}", pesan)
+        }
+    }
 
 }
