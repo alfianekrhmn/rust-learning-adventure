@@ -716,9 +716,35 @@ fn keranjang_belanja() {
 // }
 
 
-fn ambil_nama_depan(nama: String){
-    let depan = &nama[0..6];
-    println!("Nama depan: {}", depan); // Output: Alfian
+// fn ambil_nama_depan(nama: String){
+//     let depan = &nama[0..6];
+//     println!("Nama depan: {}", depan); // Output: Alfian
+// }
+
+// enum Status {
+//     Aktif,
+//     TidakAktif,
+// }
+
+// fn cek_status(status: Status) {
+//     match status {
+//         Status::Aktif => println!("Mahasiswa sedang aktif"),
+//         Status::TidakAktif => println!("Mahasiswa tidak aktif")
+//     }
+// }
+
+enum Cuaca {
+    Cerah,
+    Hujan,
+    Berawan,
+}
+
+fn cek_cuaca(cuaca: Cuaca){
+    match cuaca {
+        Cuaca::Cerah => println!("Hari ini cerah, ayo keluar!"),
+        Cuaca::Hujan => println!("Bawa payung ya, hujan!"),
+        Cuaca::Berawan => println!("Awan mendung, tapi belum tentu hujan."),
+    }
 }
 
 
@@ -823,6 +849,21 @@ fn main(){
     // let bagian = &kalimat[5..11];
     // println!("Bagian Kalimat : {}", bagian);
 
-    let nama_lengkap: String = String::from("Alfian Rahman");
-    ambil_nama_depan(nama_lengkap);
+    // let nama_lengkap: String = String::from("Alfian Rahman");
+    // ambil_nama_depan(nama_lengkap);
+
+    // let status1 = Status::Aktif;
+    // let status2 = Status::TidakAktif;
+
+    // cek_status(status1);
+    // cek_status(status2);
+
+    let cuaca_hujan = Cuaca::Hujan;
+    let cuaca_cerah = Cuaca::Cerah;
+    let cuaca_berawan = Cuaca::Berawan;
+
+    cek_cuaca(cuaca_cerah);
+    cek_cuaca(cuaca_hujan);
+    cek_cuaca(cuaca_berawan);
+
 }
