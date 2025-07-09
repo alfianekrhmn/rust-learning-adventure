@@ -797,23 +797,81 @@ fn keranjang_belanja() {
 //     }
 // }
 
-enum Transaksi {
-    Setor(u32),
-    Tarik(u32),
-    CekSaldo,
+// enum Transaksi {
+//     Setor(u32),
+//     Tarik(u32),
+//     CekSaldo,
+// }
+
+// fn proses_transaksi(transaksi: Transaksi) {
+//     match transaksi {
+//         Transaksi::Setor(uangSetor) => {
+//             println!("Uang yang anda setor sejumlah {}", uangSetor)
+//         },
+//         Transaksi::Tarik(uangTarik) => {
+//             println!("Uang yang anda tarik sejumlah {}", uangTarik)
+//         },
+//         Transaksi::CekSaldo => {
+//             println!("Uang yang anda punya adalah 20.000")
+//         }
+//     }
+// }
+
+// struct Pembayaran {
+//     id: u32,
+//     nama: String,
+//     status: StatusPembayaran,
+// }
+
+// enum StatusPembayaran {
+//     Berhasil(u32),
+//     Gagal(String),
+//     Pending,
+// }
+
+// fn proses_pembayaran(p: Pembayaran){
+//     println!("Transaksi ID : {}", p.id);
+//     println!("Nama pelanggan : {}", p.nama);
+
+//     match p.status {
+//         StatusPembayaran::Berhasil(jumlah) => {
+//             println!("✅ Berhasil membayar sejumlah {}", jumlah)
+//         },
+//         StatusPembayaran::Gagal(pesan) => {
+//             println!("❌ Gagal: {}", pesan)
+//         },
+//         StatusPembayaran::Pending => {
+//             println!("⌛ Masih menunggu konfirmasi")
+//         }
+//     }
+// }
+
+struct Pesanan {
+    id: u32,
+    nama_pelanggan: String,
+    status: StatusPesanan,
 }
 
-fn proses_transaksi(transaksi: Transaksi) {
-    match transaksi {
-        Transaksi::Setor(uangSetor) => {
-            println!("Uang yang anda setor sejumlah {}", uangSetor)
+enum StatusPesanan {
+    Dikirim(String),
+    Gagal(String),
+    Diterima,
+}
+
+fn proses_pesanan(pesanan: Pesanan) {
+    println!("Transaksi ID : {}", pesanan.id);
+    println!("Nama pelanggan : {}", pesanan.nama_pelanggan);
+
+    match pesanan.status {
+        StatusPesanan::Dikirim(nama) => {
+            println!("🚚 Sedang dikirim oleh kurir: {}", nama)
         },
-        Transaksi::Tarik(uangTarik) => {
-            println!("Uang yang anda tarik sejumlah {}", uangTarik)
+        StatusPesanan::Gagal(alasan) => {
+            println!("❌ Gagal dikirim: {}", alasan)
         },
-        Transaksi::CekSaldo => {
-            println!("Uang yang anda punya adalah 20.000")
-        }
+        StatusPesanan::Diterima => {
+            println!("✅ Pesanan sudah diterima")
+        },
     }
 }
 
@@ -978,13 +1036,48 @@ fn main(){
     // proses_pesan(pesan3);
     // proses_pesan(pesan4);
 
-    let t1 = Transaksi::Setor(100_000);
-    let t2 = Transaksi::Tarik(50_000);
-    let t3 = Transaksi::CekSaldo;
+    // let t1 = Transaksi::Setor(100_000);
+    // let t2 = Transaksi::Tarik(50_000);
+    // let t3 = Transaksi::CekSaldo;
 
-    proses_transaksi(t1);
-    proses_transaksi(t2);
-    proses_transaksi(t3);
+    // proses_transaksi(t1);
+    // proses_transaksi(t2);
+    // proses_transaksi(t3);
 
+
+    // let data1 = Pembayaran {
+    //     id: 102,
+    //     nama: "Alfian".to_string(),
+    //     status: StatusPembayaran::Berhasil(10000),
+    // };
+    // proses_pembayaran(data1);
+
+    // let data2 = Pembayaran {
+    //     id: 102,
+    //     nama: "Alfian".to_string(),
+    //     status: StatusPembayaran::Gagal("Saldo Tidak Cukup".to_string()),
+    // };
+    // proses_pembayaran(data2);
+
+    let pesanan1 = Pesanan {
+        id: 11001,
+        nama_pelanggan: "Alfian".to_string(),
+        status: StatusPesanan::Dikirim("Bang Ijal".to_string()),
+    };
+    proses_pesanan(pesanan1);
+
+    let pesanan2 = Pesanan {
+        id: 19301,
+        nama_pelanggan: "Mike".to_string(),
+        status: StatusPesanan::Gagal("Alamat Tidak Ditemuka".to_string()),
+    };
+    proses_pesanan(pesanan2);
+
+    let pesanan3 = Pesanan {
+        id: 11729,
+        nama_pelanggan: "Jhon".to_string(),
+        status: StatusPesanan::Diterima,
+    };
+    proses_pesanan(pesanan3);
 
 }
