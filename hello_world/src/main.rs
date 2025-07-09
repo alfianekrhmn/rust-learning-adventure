@@ -760,16 +760,60 @@ fn keranjang_belanja() {
 //     }
 // }
 
-enum HasilPembayaran  {
-    Berhasil(u32),
-    Gagal(String),
+// enum HasilPembayaran  {
+//     Berhasil(u32),
+//     Gagal(String),
+// }
+
+// fn proses_pembayaran(jumlah: u32) -> HasilPembayaran {
+//     if jumlah > 10_000 {
+//         HasilPembayaran::Berhasil(jumlah)
+//     }else {
+//         HasilPembayaran::Gagal(String::from("Jumlah terlalu kecil"))
+//     }
+// }
+
+// enum Pesan {
+//     Teks(String),
+//     Angka(i32),
+//     Lokasi(f64, f64),
+//     Kosong,
+// }
+
+// fn proses_pesan(pesan: Pesan){
+//     match pesan {
+//         Pesan::Teks(teks) => {
+//             println!("Pesan teks : {}", teks)
+//         },
+//         Pesan::Angka(nilai) => {
+//             println!("Pesan nilai : {}", nilai)
+//         },
+//         Pesan::Lokasi(x, y ) => {
+//             println!("Lokasi : {}, {}", x, y)
+//         },
+//         Pesan::Kosong => {
+//             println!("Pesan Kosong")
+//         }
+//     }
+// }
+
+enum Transaksi {
+    Setor(u32),
+    Tarik(u32),
+    CekSaldo,
 }
 
-fn proses_pembayaran(jumlah: u32) -> HasilPembayaran {
-    if jumlah > 10_000 {
-        HasilPembayaran::Berhasil(jumlah)
-    }else {
-        HasilPembayaran::Gagal(String::from("Jumlah terlalu kecil"))
+fn proses_transaksi(transaksi: Transaksi) {
+    match transaksi {
+        Transaksi::Setor(uangSetor) => {
+            println!("Uang yang anda setor sejumlah {}", uangSetor)
+        },
+        Transaksi::Tarik(uangTarik) => {
+            println!("Uang yang anda tarik sejumlah {}", uangTarik)
+        },
+        Transaksi::CekSaldo => {
+            println!("Uang yang anda punya adalah 20.000")
+        }
     }
 }
 
@@ -903,25 +947,44 @@ fn main(){
     //     },
     // }
 
-    let pembayaran1 = proses_pembayaran(5000);
-    let pembayaran2 = proses_pembayaran(15000);
+    // let pembayaran1 = proses_pembayaran(5000);
+    // let pembayaran2 = proses_pembayaran(15000);
 
-    match pembayaran1 {
-        HasilPembayaran::Berhasil(jumlah) => {
-            println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
-        },
-        HasilPembayaran::Gagal(jumlah) => {
-            println!("Pembayaran gagal: Jumlah terlalu kecil")
-        }
-    }
+    // match pembayaran1 {
+    //     HasilPembayaran::Berhasil(jumlah) => {
+    //         println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
+    //     },
+    //     HasilPembayaran::Gagal(jumlah) => {
+    //         println!("Pembayaran gagal: Jumlah terlalu kecil")
+    //     }
+    // }
 
-    match pembayaran2 {
-        HasilPembayaran::Berhasil(jumlah) => {
-            println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
-        },
-        HasilPembayaran::Gagal(pesan) => {
-            println!("Pembayaran gagal: {}", pesan)
-        }
-    }
+    // match pembayaran2 {
+    //     HasilPembayaran::Berhasil(jumlah) => {
+    //         println!("Pembayaran berhasil sebesar {} rupiah", jumlah)
+    //     },
+    //     HasilPembayaran::Gagal(pesan) => {
+    //         println!("Pembayaran gagal: {}", pesan)
+    //     }
+    // }
+
+    // let pesan1 = Pesan::Teks(String::from("Halo Dunia"));
+    // let pesan2 = Pesan::Angka(42);
+    // let pesan3 = Pesan::Lokasi(-7.3, 190.7);
+    // let pesan4 = Pesan::Kosong;
+
+    // proses_pesan(pesan1);
+    // proses_pesan(pesan2);
+    // proses_pesan(pesan3);
+    // proses_pesan(pesan4);
+
+    let t1 = Transaksi::Setor(100_000);
+    let t2 = Transaksi::Tarik(50_000);
+    let t3 = Transaksi::CekSaldo;
+
+    proses_transaksi(t1);
+    proses_transaksi(t2);
+    proses_transaksi(t3);
+
 
 }
