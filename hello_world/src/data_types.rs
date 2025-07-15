@@ -1,5 +1,3 @@
-use std::f32::consts::E;
-
 pub fn run() {
     let tanggal_lahir = 1;
     let unsigned_number: u8 = 12;
